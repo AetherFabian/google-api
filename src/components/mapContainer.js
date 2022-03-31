@@ -77,37 +77,41 @@ class MapContainer extends Component {
 
   render() {
     return (
-      <div class ="vody" >
-          <h1 class ="si">Google Maps Assaults</h1>
-          <div class ="container">
-          <div class ="item"> 
-          <img src='https://www.freeiconspng.com/thumbs/robber-icon/robber-crime-thief-flat-icon-0.png'/>
-          <h3>Robbery</h3>
+      <div class="vody" >
+        <h1 class="si">Google Maps Assaults</h1>
+        <div class="container">
+          <div class="item">
+            <img src='https://www.freeiconspng.com/thumbs/robber-icon/robber-crime-thief-flat-icon-0.png'
+              alt='Robbery' />
+            <h3>Robbery</h3>
           </div>
-          <div class ="item">
-          <img src='https://icon-library.com/images/murder-icon/murder-icon-19.jpg'/>    
-          <h3>Homicide</h3>
+          <div class="item">
+            <img src='https://icon-library.com/images/murder-icon/murder-icon-19.jpg'
+              alt='Homicide' />
+            <h3>Homicide</h3>
           </div>
-          <div class ="item">
-          <img src='https://upload.wikimedia.org/wikipedia/commons/5/5a/Car_icon_alone.png'/>
-          <h3>Car Assault</h3>
+          <div class="item">
+            <img src='https://upload.wikimedia.org/wikipedia/commons/5/5a/Car_icon_alone.png'
+              alt='Car Assault' />
+            <h3>Car Assault</h3>
           </div>
-          <div class ="item">
-          <img src='https://cdn-icons-png.flaticon.com/512/340/340504.png'/>
-          <h3>Assault</h3>
+          <div class="item">
+            <img src='https://cdn-icons-png.flaticon.com/512/340/340504.png'
+              alt='Assault' />
+            <h3>Assault</h3>
           </div>
-          </div>
-          <div class ="Map"  >
+        </div>
+        <div class="Map"  >
           <Map
             google={this.props.google}
             zoom={13}
             style={mapStyles}
             initialCenter={{ lat: 28.6575657, lng: -106.084936 }}>
             {this.displayMarks()}
-           </Map>
-           </div>
+          </Map>
+        </div>
       </div>
-      
+
     );
   }
 }
