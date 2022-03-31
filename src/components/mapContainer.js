@@ -1,6 +1,7 @@
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
 import React, { Component } from 'react';
 import Http from '../lib/requestApi';
+import '../components/mapContainer.css'
 
 
 class MapContainer extends Component {
@@ -32,23 +33,34 @@ class MapContainer extends Component {
       const google = this.props.google;
       let imageURL = '';
       let typeCrime = assault.crime_type;
+      let xicon = 0;
+      let yicon = 0;
+
       if (typeCrime === "Robbery") {
-        imageURL = 'https://cdn-icons-png.flaticon.com/512/340/340504.png';
+        imageURL = 'https://www.freeiconspng.com/thumbs/robber-icon/robber-crime-thief-flat-icon-0.png';
+        xicon = 35
+        yicon = 40
       }
       else if (typeCrime === "Homicide") {
-        imageURL = 'https://cdn-icons-png.flaticon.com/512/340/340504.png';
+        imageURL = 'https://icon-library.com/images/murder-icon/murder-icon-19.jpg';
+        xicon = 38
+        yicon = 55
       }
       else if (typeCrime === "Car Assault") {
-        imageURL = 'https://cdn-icons-png.flaticon.com/512/340/340504.png';
+        imageURL = 'https://upload.wikimedia.org/wikipedia/commons/5/5a/Car_icon_alone.png';
+        xicon = 40
+        yicon = 30
       }
       else if (typeCrime === "Assault") {
         imageURL = 'https://cdn-icons-png.flaticon.com/512/340/340504.png';
+        xicon = 25
+        yicon = 40
       }
       return <Marker key={assault.id}
         icon={{
           url: imageURL,
-          size: new google.maps.Size(22, 40),
-          scaledSize: new google.maps.Size(22, 40),
+          size: new google.maps.Size(xicon, yicon),
+          scaledSize: new google.maps.Size(xicon, yicon),
         }}
         position={{
           lat: x,
@@ -65,20 +77,37 @@ class MapContainer extends Component {
 
   render() {
     return (
-      <div>
-        <div className='Map'>
+      <div class ="vody" >
+          <h1 class ="si">Google Maps Assaults</h1>
+          <div class ="container">
+          <div class ="item"> 
+          <img src='https://www.freeiconspng.com/thumbs/robber-icon/robber-crime-thief-flat-icon-0.png'/>
+          <h3>Robbery</h3>
+          </div>
+          <div class ="item">
+          <img src='https://icon-library.com/images/murder-icon/murder-icon-19.jpg'/>    
+          <h3>Homicide</h3>
+          </div>
+          <div class ="item">
+          <img src='https://upload.wikimedia.org/wikipedia/commons/5/5a/Car_icon_alone.png'/>
+          <h3>Car Assault</h3>
+          </div>
+          <div class ="item">
+          <img src='https://cdn-icons-png.flaticon.com/512/340/340504.png'/>
+          <h3>Assault</h3>
+          </div>
+          </div>
+          <div class ="Map"  >
           <Map
             google={this.props.google}
-            zoom={11}
+            zoom={13}
             style={mapStyles}
-            initialCenter={{ lat: 28.6711604, lng: -106.2047057 }}>
+            initialCenter={{ lat: 28.6575657, lng: -106.084936 }}>
             {this.displayMarks()}
-          </Map>
-        </div>
-        <div>
-          Hi
-        </div>
+           </Map>
+           </div>
       </div>
+      
     );
   }
 }
