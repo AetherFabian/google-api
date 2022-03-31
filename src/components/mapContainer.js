@@ -1,7 +1,6 @@
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
 import React, { Component } from 'react';
 import Http from '../lib/requestApi';
-import Assault from './assaults';
 
 
 class MapContainer extends Component {
@@ -21,23 +20,49 @@ class MapContainer extends Component {
     this.setState({ assaults: response });
   };
 
+  getIcon = () => {
+
+  }
+
   displayMarks = () => {
     return this.state.assaults.map((assault) => {
-      console.log(assault.coordinates)
+
       let x = parseFloat(assault.coordinates["x"]);
       let y = parseFloat(assault.coordinates["y"]);
-      return <Marker key={assault.id} position={{
-        lat: x,
-        lng: y
-      }} />
+      const google = this.props.google;
+      let imageURL = '';
+      let typeCrime = assault.crime_type;
+      if (typeCrime === "Robbery") {
+        imageURL = 'https://cdn-icons-png.flaticon.com/512/340/340504.png';
+      }
+      else if (typeCrime === "Homicide") {
+        imageURL = 'https://cdn-icons-png.flaticon.com/512/340/340504.png';
+      }
+      else if (typeCrime === "Car Assault") {
+        imageURL = 'https://cdn-icons-png.flaticon.com/512/340/340504.png';
+      }
+      else if (typeCrime === "Assault") {
+        imageURL = 'https://cdn-icons-png.flaticon.com/512/340/340504.png';
+      }
+      return <Marker key={assault.id}
+        icon={{
+          url: imageURL,
+          size: new google.maps.Size(22, 40),
+          scaledSize: new google.maps.Size(22, 40),
+        }}
+        position={{
+          lat: x,
+          lng: y
+        }} />
     })
   }
 
   handleToggle = () => {
     const toggle = this.state.toggleMarks;
-    this.setState({toggleMarks: !toggle})
-    
+    this.setState({ toggleMarks: !toggle })
+
   }
+
   render() {
     return (
       <div>
