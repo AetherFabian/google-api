@@ -1,15 +1,9 @@
 body{
     background: #ebe9e5;
 }
-.vody div{
-    
-} 
-
 .container img{
     width: 100px;
     height: 80px;
-   
-
 }
 .container{
     display: flex;
